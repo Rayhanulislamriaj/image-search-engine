@@ -18,6 +18,10 @@ async function searchImages() {
 
     const results = data.results;
 
+    if(page === 1) {
+        searchResult.innerHTML = '';
+    }
+
     results.map((result) => {
         // create img tag
         const image = document.createElement('img');
@@ -40,5 +44,10 @@ async function searchImages() {
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
     page = 1;
+    searchImages();
+});
+
+showMoreBtn.addEventListener('click', (e) => {
+    page++;
     searchImages();
 });
